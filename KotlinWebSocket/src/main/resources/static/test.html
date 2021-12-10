@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        let ws = new WebSocket("ws://127.0.0.1:9091/ws");
+        ws.onopen = function (event) {
+            console.log("Opened.");
+        }
+        ws.onmessage = function (msg) {
+            console.log(msg.data);
+        }
+        ws.onclose = function (event) {
+            console.log("Closed.")
+        }
+        function sendText(txt) {
+            ws.send(txt);
+        }
+
+        function closeConn() {
+            ws.close()
+        }
+    </script>
+</head>
+<body>
+<button onclick="sendText('dsd')">发送</button>
+</body>
+</html>
